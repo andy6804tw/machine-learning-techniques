@@ -23,6 +23,42 @@
 - separating hyperplane
 - find largest-margin
 
+## 小試身手
+### Question 1.
+Consider two examples (v, +1) and (−v,−1) where v ∈ℝ2 (without padding the v_0 = 1v 
+0=1). Which of the following hyperplane is the largest-margin separating one for the two examples? You are highly encouraged to visualize by considering, for instance, v =(3,2).
+
+- A) x1​=0
+- B) x2=0
+- C) v1​x1​+v2​x2​=0
+- D) v2​x1​+v1​x2​=0
+
+> Ans: C
+
+- v 是一個二維向量 $(v_1,v_2)$，資料點$(v_1,v_2)$ 是+1，點$(-v_1,-v_2)$ 是-1，找出可以分開這兩個資料點並且有最大margin的 Hyperplane
+- 就是求 $v$ 和 $-v$ 的中垂線，即 $v_1x_1+v_2x_2=0$
+
+## [1.2 Standard Large-Margin Problem](https://www.youtube.com/watch?v=lHo9GcIURRs&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2kpk1U2&index=3)
+### 如何計算 Margin？
+接下來我們要探討 margin 的計算，該如何在超平面下計算距離。如下圖所示 x'' 與 x' 兩個都是平面上的點，所以它代表這樣是一串 平面上的向量。w 乘上平面上任何一個向量都等於 0，這代表 w 會垂直於這個平面。也就是說 w 是我們想象那個平面的法向量。既然如此，那我要求 $x$ 到 hyperplane 的距離，其實就是 $x$ 到 hyperplane 上任意點 $x'$ 的向量，投影到垂直平面的方向 $w$ 上即可。
+
+![](https://i.imgur.com/nncpbKh.png)
+
+- 若有任意兩個點 $x',x''$ 都在 hyperplane $w^Tx+b=0$ 中
+- 我們知道 $w^Tx'=-b$ 且 $w^Tx''=-b$
+- 所以 $w^T(x''-x')=0$
+    - 也就是說 vector on hyperplane 跟 $w$ 的內積會是 0
+    - 所以 **$w$ 向量垂直於這個平面，也就是 hyperplane 的法向量**
+- 既然如此，那我要求 $x$ 到 hyperplane 的距離，其實就是 $x$ 到 hyperplane 上任意點 $x'$ 的向量，投影到 $w$ 上即可。
+- $distance(x,b,w)=|\dfrac{w^T}{\|w\|}(x-x')|=\dfrac{1}{\|w\|}|w^Tx+b|$
+    - 只要回憶一下向量投影長公式 ($v_1$ 投影到向量 $v_2$) $\dfrac{v_1\cdot v_2}{\|v_2\|}=\dfrac{v_1^Tv_2}{\|v_2\|}=\dfrac{v_2^Tv_1}{\|v_2\|}$ 並利用 $w^Tx'=-b$ 即可得證。
+- 注意要除以這個方向上面的 w 長度，也就是說投影過去，要看看那個方向上單位的長度是怎麼樣。
+
+### 僅計算可分離超平面的距離
+目前已經學會給定一個平面或線可以計算點到這條線或平面的距離。但是我們今天考慮的不是任何一條線，而是可以把圈圈跟叉叉完美的分開的線，叫做分隔線 Separating Hyperplane。也就是就是我們算出來的分數，跟我們想要的圈圈叉叉要是同號的(兩個相乘極大於0)。這個式子及可以取代原有的 $|w^Tx+b|$。我們現在已經知道怎麼算了，算出分數來乘上相對應的 y 然後除以這個 w 的長度。因為在我們的條件里我們只考慮能夠把所有的圈圈叉叉都分對的這些線。
+
+![](https://i.imgur.com/PGubQbU.png)
+
 ## 重點整理
 - 我們要找出的一條線需要與每個點都越遠越好，使得可以容忍較大的測量誤差。
 - 定義一條線到底有多強壯就是，一條線的邊界有多胖，或者觀察離直線最近的點距離是多少？
