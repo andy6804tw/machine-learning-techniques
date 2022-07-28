@@ -5,7 +5,7 @@
 此課程將會以特徵轉換為主軸。分別以三個方向探討，其包含 embedding numerous features、combining predictive features 與 distilling hidden features。
 
 #### Embedding Numerous Features [嵌入大量的特徵]
-- 第一講：Linear Support Vector Machine [線性支持向量機]
+- [第一講：Linear Support Vector Machine [線性支持向量機]](./Lecture1-Linear-Support-Vector-Machine.md)
 - 第二講：Dual Support Vector Machine [對偶支持向量機]
 - 第三講：Kernel Support Vector Machine [核型支持向量機]
 - 第四講：Soft-Margin Support Vector Machine [軟式支持向量機]
