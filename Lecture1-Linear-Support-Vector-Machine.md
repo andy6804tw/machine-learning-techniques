@@ -76,9 +76,29 @@ Consider two examples (v, +1) and (−v,−1) where v ∈ℝ2 (without padding t
 
 ![](https://i.imgur.com/9RbVtwQ.png)
 
+為了變得更好解，我們將 optimization problem 現在變成：
+
+- 目標 $\min_\limits{b,w} \frac 12w^Tw$
+  - 這裡我們把 maximize 改成 minimize，變得比較熟悉
+- 條件 $y_n(w^Tx_n+b)\geq 1,\forall (x_n,y_n)\in\mathcal D$
+
 ![](https://i.imgur.com/vp8nrst.png)
 
+因為 x1 + x2 =1，可知超平面的法向量為(1,1)，根據距離計算公式，可以得到x1 到超平面的距離為根號 2。
+
 ## [1.3 Support Vector Machine](https://www.youtube.com/watch?v=FAm70y081o4&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2kpk1U2&index=4)
+剛才導出的問題是一個標準問題。那麼在具體問題中，應該如何計算呢。考慮一個簡單的例子：
+
+![](https://i.imgur.com/cdOha0Z.png)
+
+### 引入支撐向量機概念
+support vector machine，我們可以把它看成一個方法，這個方法透過找出離邊界近的那些點作為支撐向量的候選人，並得到最胖的平面。因此除了離邊界最近的點以外，都不會影響 hyperplane。這些點支撐著這條胖胖的線，所以被稱為 support vector (支撐向量)，之後會提到這些點其實是 support vector 的 candidate(候選人)。簡而言之 SVM 就是利用 support vectors 去找一個最 fat 的 hyperplane。
+
+![](https://i.imgur.com/wAQg3LN.png)
+
+而我們要最小化的東西是一個 w 的二次函數，然後再來它的所有的條件都是 b 跟 w 的一次式。有這樣特性的最佳化問題，我們一般把它叫做二次規劃quadratic programming。因此我們可以將此問題表示成二次規劃的標準形式，然後用人家已經做出來的工具然後直接去解決它就好。
+
+![](https://i.imgur.com/epFRY6t.png)
 
 ## 重點整理
 - 我們要找出的一條線需要與每個點都越遠越好，使得可以容忍較大的測量誤差。
