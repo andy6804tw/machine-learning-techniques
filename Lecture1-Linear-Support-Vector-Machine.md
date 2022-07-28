@@ -60,6 +60,7 @@ Consider two examples (v, +1) and (−v,−1) where v ∈ℝ2 (without padding t
 ![](https://i.imgur.com/PGubQbU.png)
 
 ### 更進一步簡化式子
+想一下若最小一個剛好等於 1，那 margin 就可以直接寫下最小的等於1乘上1除以這個 w 長度，所以我的 margin，就可以用一個很簡單的式子寫出來了，1除上 w 長度。
 
 ![](https://i.imgur.com/rxjVqQ3.png)
 
@@ -70,6 +71,14 @@ Consider two examples (v, +1) and (−v,−1) where v ∈ℝ2 (without padding t
 - optimization problem 現在變成：
     - 目標 $\max_\limits{b,w} \frac 1{\|w\|}$
     - 條件 $\min_\limits{n=1,...,N}y_n(w^Tx_n+b)=1$
+
+所以我們式子現在變成下圖所示，我們要想辦法把這個東西做得越大越好。這個東西是我們現在的 margin 我們加上的條件是裡面最小的 y 乘上分數要剛好等於 1。
+
+![](https://i.imgur.com/9RbVtwQ.png)
+
+![](https://i.imgur.com/vp8nrst.png)
+
+## [1.3 Support Vector Machine](https://www.youtube.com/watch?v=FAm70y081o4&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2kpk1U2&index=4)
 
 ## 重點整理
 - 我們要找出的一條線需要與每個點都越遠越好，使得可以容忍較大的測量誤差。
