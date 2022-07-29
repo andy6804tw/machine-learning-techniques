@@ -26,6 +26,11 @@
 
 #### 第十六講： Summary [總結]
 
+
+## 其他參考資源
+- [hackmd 筆記](https://hackmd.io/@johnnyasd12/BJ9bqqevD)
+- [ML學習筆記(博客)](https://www.twblogs.net/a/5eefd169411a0ed3151dca9f)
+
 ## 版權許可（License）
 
 MIT,本著作係採用[創用CC 姓名標示-相同方式分享 3.0 台灣 授權條款](https://creativecommons.org/licenses/by-nc/3.0/)授權.
