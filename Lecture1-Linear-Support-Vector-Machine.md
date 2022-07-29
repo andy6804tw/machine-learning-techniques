@@ -116,11 +116,34 @@ hard-margin 意思是我們要把所有資料都分開。線性指的是輸入�
 
 ![](https://i.imgur.com/7vlJdCx.png)
 
+## [1.4 Reasons behind Large-Margin Hyperplane](https://www.youtube.com/watch?v=7UUO_AamxcA&list=PLXVfgk9fNX2IQOYPmqjqWsNUFl2kpk1U2&index=5)
+### 以 regularization 解釋 SVM
+接下來探討有沒有一些理論上的保證或者理論上的解釋，告訴我們爲什麽SVM這樣的模型可以做的好。這邊線性超平面也可以應用在非線性轉換的特徵上，所以先用 z 來通用表示我們的特徵。SVM 做的事情其實就是一種 regularization，其目標是要取得最大的邊界，同時要將類別分正確。仔細觀察 weight-decay regularization 和 SVM 的異同，我們發現兩者的目標和限制條件對調。
+
+![](https://i.imgur.com/NqngeTi.png)
+
+### 以 VC dimension 的方式來解釋 SVM
+另一種是以 VC dimension 的方式來說明。Perceptron Learning Algorithm (PLA) 在有三個點的情況下，它可以做出所有 8 種 dichotomies(二分法)。可是當 SVM 限制它的 margin 一定要大於 ρ 的時候，可能就有某些 case 是它不能做出 dichotomy。因此 dichotomies 越少，那麽複雜度就越低，相對的 VC dimension 比較小，那 generalization 能力就比較好。
+
+![](https://i.imgur.com/1EE9hCD.png)
+
+我們繼續推演一下，什麽叫做能夠做出來的情形比較少， 你的 VC dimension 就比較小。機器學習基石課程中介紹的 Perceptron 算法的 dvc=d+1，而 SVM 的 dvc≤d+1，即因為 large-margin 的限制，減少了二分法的數量，進而減少了 VC Dimention。因此也就降低了模型複雜度，提高了泛化能力。
+
+![](https://i.imgur.com/oe3z259.png)
+
+## 結論(新的控制複雜度方法)
+由於太簡單的平面可能我們沒有辦法把事情做好，所以需要比較複雜的邊界，這個複雜的邊界可以透過做 feature transform 來達到。在這一講提到 Large-Margin 概念，使用較胖的邊界我的數量就可以更少一些。過於簡單的好處因爲 VC dimension 比較小，我們可以控制generalization，等等。那麽複雜的好處，因爲我的 Ein 可以較小。如果把 Large-Margin 跟 transform 合起來做的話，就會變成 not many 並透過transform，我們還是可以得到複雜的 boundary。這就是，我們之後會講到 SVM 模型的好處，我們有一個新的控制複雜度的方法，這樣子就可以更盡情地使用各式各樣不同的特征轉換。
+
+![](https://i.imgur.com/Zqbjahj.png)
+
+下一講就要配合非線性轉換，看看我們可以做到什麽事情。
+
 ## 重點整理
 - SVM 的目標就是想最大化兩個分類的邊緣到直線的距離。
 - 我們要找出的一條線需要與每個點都越遠越好，使得可以容忍較大的測量誤差。
 - 定義一條線到底有多強壯就是，一條線的邊界有多胖，或者觀察離直線最近的點距離是多少？
 - 由於 objective function 是 quadratic (convex) 的二次函數，以及它的限制項為線性(一次式)。因此是個二次規劃的問題。
+- 其核心思想是想辦法降低 VC Dimention，進而降低算法複雜度，從而提高泛化能力。
 
 ## 延伸閱讀
 - [通俗解釋高中生能聽懂的SVM本質和原理](https://www.cnblogs.com/ailitao/p/11047291.html)
